@@ -1,0 +1,21 @@
+{
+    "name": "schmunk42/php-inflector",
+    "description": "Standalone PHP 5.2 Inflector backport from Yii 2.0",
+    "keywords": ["yii", "inflector"],
+    "homepage": "https://github.com/schmunk42/php-inflector",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Tobias Munk",
+            "email": "schmunk@usrbin.de",
+            "homepage": "http://www.usrbin.de"
+        }
+    ],
+    "autoload": {
+        "classmap": ["PhInflector.php"]
+    },
+    "require": {
+        "php": ">=5.2.0"
+    }
+}
