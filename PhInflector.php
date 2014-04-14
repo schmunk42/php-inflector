@@ -459,7 +459,7 @@ class PhInflector
      */
     public static function slug($string, $replacement = '-', $lowercase = true)
     {
-        if (extension_loaded('intl') === true) {
+        if (extension_loaded('intl') === true && version_compare(phpversion(), '5.4.0') >= 0) {
             $options = 'Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove;';
             $string = transliterator_transliterate($options, $string);
             $string = preg_replace('/[-\s]+/', $replacement, $string);
