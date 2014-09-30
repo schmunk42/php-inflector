@@ -6,8 +6,8 @@
  * PhInflector based on BaseInflector from Yii 2.0 - this is just a simple PHP 5.2 backport
  *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
- * @author Tobias Munk <schmunk@usrbin.de> 
- * @author Kai Ziefle <k.ziefle@herzogkommunikation.de> 
+ * @author Tobias Munk <schmunk@usrbin.de>
+ * @author Kai Ziefle <k.ziefle@herzogkommunikation.de>
  * @since 0.1
  */
 class PhInflector
@@ -459,14 +459,8 @@ class PhInflector
      */
     public static function slug($string, $replacement = '-', $lowercase = true)
     {
-        if (extension_loaded('intl') === true && version_compare(phpversion(), '5.4.0') >= 0) {
-            $options = 'Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove;';
-            $string = transliterator_transliterate($options, $string);
-            $string = preg_replace('/[-\s]+/', $replacement, $string);
-        } else {
-            $string = str_replace(array_keys(self::$transliteration), self::$transliteration, $string);
-            $string = preg_replace('/[^\p{L}\p{Nd}]+/u', $replacement, $string);
-        }
+        $string = str_replace(array_keys(self::$transliteration), self::$transliteration, $string);
+        $string = preg_replace('/[^\p{L}\p{Nd}]+/u', $replacement, $string);
         $string = trim($string, $replacement);
 
         return $lowercase ? strtolower($string) : $string;
